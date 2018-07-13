@@ -1,0 +1,17 @@
+<! Lane Form
+    TODO: Show this as a popup window instead of redirect to new page>
+
+{%  extends 'Lanes/base.html' %}
+{% block content %}
+
+    <div class="container-fluid">
+    </br>
+        <form method="POST" >
+            {% csrf_token %}
+            {{ laneForm.as_p}}
+            <button type="submit">Add Lane</button>
+        </form>
+
+    </div>
+
+{% endblock %}

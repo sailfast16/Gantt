@@ -1,0 +1,38 @@
+<! Base HTML Contains the input scripts and navbar>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gantt Chart Optimization</title>
+    {% load static %}
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <link rel="stylesheet" href="{%  static 'Lanes/css/bootstrap.css' %}" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+<nav class="navbar bg-dark navbar-dark">
+       <a class="navbar-brand" href="/">Lane Filling Optimization</a>
+            <ul class="list-inline">
+                <li class="list-inline-item">
+                    <button class="btn btn-primary"  type="button" onclick="window.location.href='/addLane'">Add Lane</button>
+                </li>
+                <li class="list-inline-item">
+                    <button class="btn btn-primary" type="button" onclick="window.location.href='/addTask'">Add Jobs</button>
+                </li>
+                <li class="list-inline-item">
+                    <a class="nav-link" id="view_opt">View Optimal</a>
+                </li>
+            </ul>
+    </nav>
+{% block content %}
+
+<! All other files get added in here>
+
+{% endblock %}
+</body>
+
+</html>

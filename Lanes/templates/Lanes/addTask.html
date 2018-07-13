@@ -1,0 +1,16 @@
+<! Task Form
+    TODO: Show this as a popup window instead of redirect to new page>
+
+{%  extends 'Lanes/base.html' %}
+{% block content %}
+
+    <div class="container-fluid">
+        <form method="POST" >
+            {% csrf_token %}
+            {{ taskForm.as_p}}
+            <button type="submit">Add Task</button>
+        </form>
+
+    </div>
+
+{% endblock %}

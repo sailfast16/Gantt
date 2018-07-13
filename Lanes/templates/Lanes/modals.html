@@ -1,0 +1,54 @@
+<! Forms in popup windows (not implemented yet)>
+
+
+<div class="modal hide" id="laneModal" name="laneModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Lane Setup</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form method="POST" >
+                    {% csrf_token %}
+                    {{ laneForm}}
+                </form>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="submit">Submit</button>
+            </div>
+
+        </div>
+    </div>
+</div><div class="modal hide" id="laneModal" name="laneModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Lane Setup</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form method="POST" >
+                    {% csrf_token %}
+                    {{ laneForm}}
+                </form>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Save Settings</button>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,203 @@
+<! JS to draw tasks/lanes based on JSON files and
+    send AJAX post request to server to update task pos. on drag>
+
+{% block content %}
+    <script>
+    // TODO: programmatically determine size settings
+
+    // ----------------------------------------------------
+    // Display Settings
+    var laneHeight = 40;
+    var laneGap = laneHeight + 5;
+
+    var width = $(window).width() * .75;
+    var height = ($(window).height())*.75;
+
+
+    var title_height = 60;
+    var title_width = .4*width;
+    var title_x = (width-title_width)/2;
+
+    var spacing = 10;
+
+    // keeps track of the last lane the mouse was over for drag lock
+    var mouseLane;
+    // Tracks mouse click location for drag functions
+    var deltaX, deltaY;
+
+    //-----------------------------------------------------
+    // Main Container to hold all SVG objects
+    var container = d3.select(".gantt-container").append("svg")
+        .attr("width", width)
+        .attr("height", height)
+        .style("padding",40)
+
+    //-----------------------------------------------------
+    // Main Box (Green)
+    var outer_box = container.append("rect");
+    var outer_attrs = outer_box
+        .attr("width", width)
+        .attr("height", height)
+        .style("fill","green")
+        .style("stroke", "black");
+
+    //-----------------------------------------------------
+    // Title Box
+    var title = container.append("g");
+    var title_box = title.append("rect")
+        .attr("width", title_width)
+        .attr("height", title_height)
+        .attr("x",title_x)
+        .attr("y", spacing)
+        .style("fill","white")
+        .style("stroke", "black")
+
+    var title_text = title.append("text")
+        .attr("x", title_x + .25*title_width)
+        .attr("y", spacing + .7*title_height)
+        .text("Gantt Chart")
+        .attr("font-size", "40px");
+
+
+    // ----------------------------------------------------
+    // Utility Functions
+
+    // Display Task Info on hover
+    // Still working on its functionality
+    var tooltip = d3.select("body")
+    .append("div")
+    .style("position", "absolute")
+    .style("z-index", "10")
+    .style("visibility", "hidden")
+    .style("background", "#93ff81")
+    .text("a simple tooltip");
+
+    // handles task Dragging
+    var dragTask = d3.drag()
+
+        // Initial Click:
+        // determine which task was clicked and sets click location
+        .on("start", function () {
+            //console.log("dragging");
+            var current = d3.select(this);
+            deltaX = current.attr("x") - d3.event.x;
+            deltaY = current.attr("y") - d3.event.y;
+        })
+
+        // While Dragging:
+        // continuously updates the x,y cords of the task
+        // y location is locked to a lane
+        .on("drag", function () {
+
+            d3.select(this)
+                .attr("x", d3.event.x + deltaX)
+                .attr("y", function (d, i) {
+                    return title_height + (2 * spacing) + mouseLane * laneGap
+                })
+        })
+
+        // Task dropped:
+        // Sends AJAX Post request to the server to update
+        //      the current lane and start "date" of the task
+        //      in the DB
+        .on("end", function(){
+            var cur_task = d3.select(this);
+            $.ajax({
+                url: "/moveTask/" + (mouseLane+1) + "/" + cur_task.attr('task') + "/" + cur_task.attr("x"),
+                type: "POST",
+                data: {
+                    'csrfmiddlewaretoken': "{{  csrf_token  }}"
+                }
+                })
+        });
+
+    //-----------------------------------------------------
+    // d3.json function iterates callback over every record in the JSON file
+    // Import Lane JSON data and run the function to display the Lanes
+    d3.json("lanesJSON/", function (error, lane_data) {
+        addLane(lane_data);
+    });
+
+    // Import Task JSON file and run the function to display the Tasks
+    d3.json("tasksJSON/", function (error, task_data) {
+    addTask(task_data);
+    });
+
+    //-----------------------------------------------------
+    // Function that creates lane rectangles and defines their behavior
+    function addLane(source){
+        // contains every lane
+        var laneContainer = container.append("g");
+
+        // single lane where "source" is a single lane record from the DB
+        var lane = laneContainer.selectAll("rect")
+            .data(source)
+            .enter()
+            .append("rect");
+
+        var lane_attrs = lane
+            .attr("x", 0)
+            .attr("y", function (d, i) {
+                return title_height + (2*spacing) + i * laneGap;
+            })
+            .attr("width", width-40)
+            .attr("height", laneHeight)
+            .style("stroke","black")
+            .style("fill","white")
+
+            // Tracks which lane the mouse is over for drag function
+            .on("mouseover", function(d,i) {mouseLane = i ; console.log(mouseLane)})
+    }
+
+    //-----------------------------------------------------
+    // Function that creates task rectangles and defines their behavior
+    function addTask(source){
+
+        // container to hold every task rectangle
+        var taskContainer = container.append("g");
+
+        // single task where "source" is a task record from the DB
+        var task = taskContainer.selectAll("rect")
+            .data(source)
+            .enter()
+            .append("rect")
+
+        // call the drag function on a task
+        dragTask(task);
+
+        var task_attrs = task
+            .attr("x", function(d){
+                //console.log(d.start_date);
+                return d.start_date;
+            })
+
+            // using the lane ID is a bad idea here
+            // see models.py for explanation
+
+            .attr("y", function (d) {
+                return title_height + (2*spacing) + (d.lane_id - 1)*laneGap;
+            })
+
+            // added two attributes to be able to send lane/task ids with AJAX
+            .attr("lane", function(d){return d.lane_id})
+            .attr("task", function(d){return d.id})
+            .attr("width", function(d){
+                return d.length;
+            })
+            .attr("height", laneHeight)
+            .style("fill","blue")
+            .style("stroke", "black")
+
+            // display Task info on mouseover
+            .on("mouseover", function(d){console.log("Hi");
+                                        tooltip.text(d.name);
+                                        return tooltip.style("visibility", "visible");})
+
+            // hide Task info on mouseout
+            .on("mouseout", function(){console.log('bye');return tooltip.style("visibility", "hidden");});
+
+}
+    </script>
+
+
+{%  endblock %}
