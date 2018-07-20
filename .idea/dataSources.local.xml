@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-    <data-source name="Django default" uuid="e1dc3e0c-7e40-4f9f-8f98-877731cafc05">
+    <data-source name="db" uuid="191c3949-ea0c-468e-a14c-7931a953bd57">
       <database-info product="SQLite" version="3.20.1" jdbc-version="2.1" driver-name="SQLite JDBC" driver-version="3.20.1.1" />
       <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed" />
-      <auth-required>false</auth-required>
       <introspection-schemas>*:main</introspection-schemas>
     </data-source>
-    <data-source name="db [2]" uuid="41ddc21e-20f1-4873-b271-2ae7248f8f70">
+    <data-source name="db [2]" uuid="f73c514b-10de-4bd7-82e9-c4b3ad78e62f">
+      <database-info product="SQLite" version="3.20.1" jdbc-version="2.1" driver-name="SQLite JDBC" driver-version="3.20.1.1" />
+      <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed" />
+      <introspection-schemas>*:main</introspection-schemas>
+    </data-source>
+    <data-source name="db [3]" uuid="e975a058-b4a3-4a2d-8f44-d638d209428d">
+      <database-info product="SQLite" version="3.20.1" jdbc-version="2.1" driver-name="SQLite JDBC" driver-version="3.20.1.1" />
+      <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed" />
+      <introspection-schemas>*:main</introspection-schemas>
+    </data-source>
+    <data-source name="db [4]" uuid="13bc9ec5-3f2f-4424-9e92-f17ae544cec7">
       <database-info product="SQLite" version="3.20.1" jdbc-version="2.1" driver-name="SQLite JDBC" driver-version="3.20.1.1" />
       <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed" />
       <introspection-schemas>*:main</introspection-schemas>

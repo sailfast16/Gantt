@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.http import JsonResponse
 from .models import Lane
-from .models import Task
+from .models import Task1
 from .forms import laneForm
 from .forms import taskForm
 
@@ -46,14 +46,21 @@ def addTask(request):
         form = taskForm(request.POST)
 
         if form.is_valid():
+            name = form.cleaned_data['name']
+            description = form.cleaned_data['description']
+            start_date = form.cleaned_data['start_date']
+            length = form.cleaned_data['length']
+            lane = form.cleaned_data['lane']
+
+
             Lane.objects.create(
-                name=form.cleaned_data['name'],
-                description=form.cleaned_data['description'],
-                start_date=form.cleaned_data['start_date'],
-                length=form.cleaned_data['length'],
+                name=name,
+                description=description,
+                start_date=start_date,
+                length=length,
 
                 # This could also be why the task form isn't functioning properly
-                lane=form.cleaned_data['lane']
+                lane=lane
             ).save()
 
             return HttpResponseRedirect('/')
@@ -69,8 +76,8 @@ def addTask(request):
 def moveTask(request,lane,task,start):
     task_id = task
     lane_id = lane
-    task = Task.objects.get(pk=task_id)
-    task.lane_id = lane_id
+    task = Task1.objects.get(pk=task_id)
+    task.lane = lane
     task.start_date = start
     task.save()
 
@@ -84,6 +91,6 @@ def lanesJSON(request):
 
 # Defines the endpoint to access Task Records as JSON
 def taskJSON(request):
-    data = list(Task.objects.values())
+    data = list(Task1.objects.values())
     return JsonResponse(data, safe=False)
 

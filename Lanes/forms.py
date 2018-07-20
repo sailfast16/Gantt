@@ -1,5 +1,6 @@
 from django import forms
 from .models import Lane
+from .models import Task
 
 
 class laneForm(forms.Form):

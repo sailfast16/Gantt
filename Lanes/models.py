@@ -4,7 +4,7 @@
 # JS file uses the Lane ID to determine Y-pos so PK needs to always be the lowest available value
 
 from django.db import models
-
+from multipleselectionfield import MultipleSelectionField
 
 class Lane(models.Model):
     name = models.CharField(max_length=10)
@@ -18,5 +18,22 @@ class Task(models.Model):
     description = models.CharField(max_length=50)
     start_date = models.IntegerField(default=0)
     length = models.IntegerField(default=1)
-    lane = models.ForeignKey(Lane, on_delete=models.CASCADE)
+    lane = models.IntegerField(default=0)
+
+
+color_choices = ((1,'Red'),(2,'Green'),(3,'Blue'))
+resource_list = ((1,'Resource 1'),(2,'Resource 2'), (3, 'Resource 3'))
+
+
+class Task1(models.Model):
+    family = models.IntegerField(default=0)
+    resources = MultipleSelectionField(choices=resource_list)
+    least_start = models.IntegerField(default=0)
+    start = models.IntegerField(default=0)
+    end = models.IntegerField(default=0)
+    max_end = models.IntegerField(default=0)
+    late_cost = models.IntegerField(default=100)
+    early_cost = models.IntegerField(default=0)
+    fixed = models.BooleanField()
+    color = models.IntegerField(choices=color_choices, default=1)
 

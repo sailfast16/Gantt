@@ -3,8 +3,6 @@
 
 {% block content %}
     <script>
-    // TODO: programmatically determine size settings
-
     // ----------------------------------------------------
     // Display Settings
     var laneHeight = 40;
@@ -70,16 +68,23 @@
     .style("z-index", "10")
     .style("visibility", "hidden")
     .style("background", "#93ff81")
-    .text("a simple tooltip");
+    .text("a simple tooltip")
 
-    // handles task Dragging
+
+
+
+    var dragable = 1;
     var dragTask = d3.drag()
 
         // Initial Click:
         // determine which task was clicked and sets click location
         .on("start", function () {
-            //console.log("dragging");
             var current = d3.select(this);
+            if (current.attr('fixed') == "true"){
+                dragable = 0;
+                return
+            }
+            else { dragable = 1;}
             deltaX = current.attr("x") - d3.event.x;
             deltaY = current.attr("y") - d3.event.y;
         })
@@ -88,10 +93,21 @@
         // continuously updates the x,y cords of the task
         // y location is locked to a lane
         .on("drag", function () {
+            if (dragable == 0){
+                return 0
+            }
+
+            if (d3.event.x + deltaX < 0){
+                    var newX = 0;
+                }
+
+            else{
+                var newX = d3.event.x + deltaX;
+            }
 
             d3.select(this)
-                .attr("x", d3.event.x + deltaX)
-                .attr("y", function (d, i) {
+                .attr("x", newX)
+                .attr("y", function () {
                     return title_height + (2 * spacing) + mouseLane * laneGap
                 })
         })
@@ -101,6 +117,10 @@
         //      the current lane and start "date" of the task
         //      in the DB
         .on("end", function(){
+              if (dragable == 0){
+                return 0
+            }
+
             var cur_task = d3.select(this);
             $.ajax({
                 url: "/moveTask/" + (mouseLane+1) + "/" + cur_task.attr('task') + "/" + cur_task.attr("x"),
@@ -111,6 +131,7 @@
                 })
         });
 
+
     //-----------------------------------------------------
     // d3.json function iterates callback over every record in the JSON file
     // Import Lane JSON data and run the function to display the Lanes
@@ -120,7 +141,8 @@
 
     // Import Task JSON file and run the function to display the Tasks
     d3.json("tasksJSON/", function (error, task_data) {
-    addTask(task_data);
+        timeWindow(task_data);
+        addTask(task_data)
     });
 
     //-----------------------------------------------------
@@ -146,7 +168,7 @@
             .style("fill","white")
 
             // Tracks which lane the mouse is over for drag function
-            .on("mouseover", function(d,i) {mouseLane = i ; console.log(mouseLane)})
+            .on("mouseover", function(d,i) {mouseLane = i ;})
     }
 
     //-----------------------------------------------------
@@ -167,36 +189,88 @@
 
         var task_attrs = task
             .attr("x", function(d){
-                //console.log(d.start_date);
-                return d.start_date;
+                return d.start;
             })
 
             // using the lane ID is a bad idea here
             // see models.py for explanation
 
             .attr("y", function (d) {
-                return title_height + (2*spacing) + (d.lane_id - 1)*laneGap;
+                return title_height + (2*spacing) + (d.family-1)*laneGap;
             })
 
             // added two attributes to be able to send lane/task ids with AJAX
-            .attr("lane", function(d){return d.lane_id})
+            .attr("lane", function(d){return d.family})
             .attr("task", function(d){return d.id})
+            .attr("fixed", function(d){return d.fixed})
             .attr("width", function(d){
-                return d.length;
+                return d.end - d.start;
             })
             .attr("height", laneHeight)
-            .style("fill","blue")
+            .style("fill", function(d){if (d.color == 1){return "Red"};
+                                       if (d.color == 2){return "Green"};
+                                       if (d.color == 3){return "Blue"}})
             .style("stroke", "black")
 
             // display Task info on mouseover
-            .on("mouseover", function(d){console.log("Hi");
-                                        tooltip.text(d.name);
-                                        return tooltip.style("visibility", "visible");})
+            .on("mouseover", function(d){tooltip.text("Task: " + d.id);
+                                            tooltip.style("visibility", "visible");
+                                            })
 
             // hide Task info on mouseout
-            .on("mouseout", function(){console.log('bye');return tooltip.style("visibility", "hidden");});
+            .on("mouseout", function(){
+                return tooltip.style("visibility", "hidden");});
 
 }
+
+// Function that creates task rectangles and defines their behavior
+    function timeWindow(source) {
+
+        // container to hold every task rectangle
+        var taskContainer = container.append("g");
+
+        // single task where "source" is a task record from the DB
+        var task = taskContainer.selectAll("rect")
+            .data(source)
+            .enter()
+            .append("rect")
+
+        var task_attrs = task
+            .attr("x", function (d) {
+                return d.least_start;
+            })
+
+            // using the lane ID is a bad idea here
+            // see models.py for explanation
+
+            .attr("y", function (d) {
+                return title_height + (2 * spacing) + (d.family - 1) * laneGap+2;
+            })
+            .attr("z",100)
+
+            .attr("width", function (d) {
+                return d.max_end - d.least_start;
+            })
+            .attr("height", laneHeight-4)
+            //.style("visibility", "hidden")
+            .style("fill","grey")
+            .style("stroke", "black")
+
+            // display Task info on mouseover
+            .on("mouseover", function(d) {
+                console.log("test")
+                var current = d3.select(this)
+                current.style("fill", "grey");
+            })
+
+            // hide Task info on mouseout
+            .on("mouseout", function () {
+                var current = d3.select(this)
+                current.style("fill", "white");
+                current.style("stroke","white");
+            });
+    }
+
     </script>
 
 

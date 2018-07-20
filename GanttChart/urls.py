@@ -4,12 +4,11 @@ from django.urls import include
 from Lanes import views
 
 
-#
 urlpatterns = [
     # Admin Site
     path('admin/', admin.site.urls),
 
-    # Home Page
+    # Home
     path('', views.index),
 
     # Add Lane Page/ Endpoint
