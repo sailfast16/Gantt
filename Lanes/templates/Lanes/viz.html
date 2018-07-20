@@ -105,6 +105,15 @@
                 var newX = d3.event.x + deltaX;
             }
 
+            var current = d3.select(this)
+            if (d3.event.x + deltaX <= current.attr("least_start")){
+                newX = current.attr("least_start")
+            }
+
+            if (d3.event.x + deltaX >= current.attr("max_end")){
+                newX = current.attr("max_end")-current.attr("width")
+            }
+
             d3.select(this)
                 .attr("x", newX)
                 .attr("y", function () {
@@ -122,8 +131,9 @@
             }
 
             var cur_task = d3.select(this);
+            var end = parseInt(cur_task.attr("x")) + parseInt(cur_task.attr("width"));
             $.ajax({
-                url: "/moveTask/" + (mouseLane+1) + "/" + cur_task.attr('task') + "/" + cur_task.attr("x"),
+                url: "/moveTask/" + (mouseLane+1) + "/" + cur_task.attr('task') + "/" + cur_task.attr("x") + "/" + end,
                 type: "POST",
                 data: {
                     'csrfmiddlewaretoken': "{{  csrf_token  }}"
@@ -203,6 +213,8 @@
             .attr("lane", function(d){return d.family})
             .attr("task", function(d){return d.id})
             .attr("fixed", function(d){return d.fixed})
+            .attr("least_start", function(d){return d.least_start})
+            .attr("max_end", function(d){return d.max_end})
             .attr("width", function(d){
                 return d.end - d.start;
             })
@@ -257,18 +269,18 @@
             .style("stroke", "black")
 
             // display Task info on mouseover
-            .on("mouseover", function(d) {
-                console.log("test")
-                var current = d3.select(this)
-                current.style("fill", "grey");
-            })
+           // .on("mouseover", function(d) {
+             //   console.log("test")
+               // var current = d3.select(this)
+                //current.style("fill", "grey");
+            //})
 
             // hide Task info on mouseout
-            .on("mouseout", function () {
-                var current = d3.select(this)
-                current.style("fill", "white");
-                current.style("stroke","white");
-            });
+           // .on("mouseout", function () {
+             //   var current = d3.select(this)
+               // current.style("fill", "white");
+               // current.style("stroke","white");
+           // });
     }
 
     </script>

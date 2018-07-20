@@ -24,5 +24,5 @@ urlpatterns = [
     path('tasksJSON/', views.taskJSON, name='getTasks'),
 
     # Change Task data in DB (used by AJAX)
-    path("moveTask/<lane>/<task>/<start>", views.moveTask, name='moveTask')
+    path("moveTask/<lane>/<task>/<start>/<end>", views.moveTask, name='moveTask')
 ]

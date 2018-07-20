@@ -73,12 +73,13 @@ def addTask(request):
 # new lane, the task ID and the new X-pos
 # are sent with AJAX request at the end of the URL
 # updates the record values in the DB for the specific task
-def moveTask(request,lane,task,start):
+def moveTask(request,lane,task,start,end):
     task_id = task
     lane_id = lane
     task = Task1.objects.get(pk=task_id)
-    task.lane = lane
-    task.start_date = start
+    task.family = lane
+    task.start = start
+    task.end = end
     task.save()
 
     return HttpResponseRedirect('/')

@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4736864f-087e-4c98-9cdf-5ab32cfc9b8c" name="Default" comment="fixed task negative x-pos">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/41ddc21e-20f1-4873-b271-2ae7248f8f70.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e1dc3e0c-7e40-4f9f-8f98-877731cafc05.xml" beforeDir="false" />
+    <list default="true" id="4736864f-087e-4c98-9cdf-5ab32cfc9b8c" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GanttChart/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/GanttChart/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lanes/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/Lanes/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lanes/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/Lanes/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Lanes/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Lanes/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Lanes/templates/Lanes/viz.html" beforeDir="false" afterPath="$PROJECT_DIR$/Lanes/templates/Lanes/viz.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Lanes/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Lanes/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/pip-selfcheck.json" beforeDir="false" afterPath="$PROJECT_DIR$/venv/pip-selfcheck.json" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.idea/httpRequests/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -86,8 +79,8 @@
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Lanes/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-367">
-              <caret line="6" column="57" selection-start-line="6" selection-start-column="57" selection-end-line="6" selection-end-column="57" />
+            <state relative-caret-position="402">
+              <caret line="35" column="48" lean-forward="true" selection-start-line="35" selection-start-column="48" selection-end-line="35" selection-end-column="48" />
               <folding>
                 <element signature="e#292#320#0" expanded="true" />
               </folding>
@@ -110,8 +103,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Lanes/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="83" column="34" selection-start-line="83" selection-start-column="34" selection-end-line="83" selection-end-column="34" />
+            <state relative-caret-position="413">
+              <caret line="76" column="18" selection-start-line="76" selection-start-column="18" selection-end-line="76" selection-end-column="18" />
               <folding>
                 <element signature="e#39#74#0" expanded="true" />
               </folding>
@@ -119,20 +112,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GanttChart/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="13" column="29" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
+            <state relative-caret-position="460">
+              <caret line="26" column="46" selection-start-line="26" selection-start-column="46" selection-end-line="26" selection-end-column="46" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="viz.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="viz.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Lanes/templates/Lanes/viz.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="233">
-              <caret line="246" column="79" selection-start-line="246" selection-start-column="79" selection-end-line="246" selection-end-column="79" />
+            <state relative-caret-position="672">
+              <caret line="133" column="59" selection-start-line="133" selection-start-column="59" selection-end-line="133" selection-end-column="59" />
             </state>
           </provider>
         </entry>
@@ -214,13 +207,13 @@
         <option value="$PROJECT_DIR$/Lanes/templates/Lanes/addLane.html" />
         <option value="$PROJECT_DIR$/Lanes/templates/Lanes/addTask.html" />
         <option value="$PROJECT_DIR$/Lanes/forms.py" />
-        <option value="$PROJECT_DIR$/GanttChart/urls.py" />
         <option value="$PROJECT_DIR$/templates/lane.json" />
         <option value="$PROJECT_DIR$/templates/task.json" />
         <option value="$PROJECT_DIR$/Lanes/admin.py" />
         <option value="$PROJECT_DIR$/Lanes/models.py" />
-        <option value="$PROJECT_DIR$/Lanes/views.py" />
         <option value="$PROJECT_DIR$/Lanes/templates/Lanes/viz.html" />
+        <option value="$PROJECT_DIR$/Lanes/views.py" />
+        <option value="$PROJECT_DIR$/GanttChart/urls.py" />
       </list>
     </option>
   </component>
@@ -234,8 +227,8 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1433" />
-    <option name="y" value="-8" />
+    <option name="x" value="1709" />
+    <option name="y" value="-9" />
     <option name="width" value="874" />
     <option name="height" value="385" />
   </component>
@@ -350,7 +343,14 @@
       <option name="project" value="LOCAL" />
       <updated>1531503355475</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="JSON">
+      <created>1532111882626</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1532111882626</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -367,14 +367,14 @@
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="7" weight="0.32952926" />
-      <window_info anchor="bottom" id="Event Log" order="13" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="13" side_tool="true" weight="0.32953826" />
       <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="3" weight="0.031383738" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Python Console" order="11" />
-      <window_info anchor="bottom" id="Terminal" order="12" weight="0.34236804" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="12" visible="true" weight="0.20256776" />
       <window_info anchor="bottom" id="Database Console" order="0" weight="0.32952926" />
-      <window_info content_ui="combo" id="Project" order="0" weight="0.2921875" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2390625" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" weight="0.0" />
       <window_info anchor="right" id="SciView" order="4" />
@@ -422,7 +422,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="fixed task negative x-pos" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed task negative x-pos" />
+    <MESSAGE value="JSON" />
+    <option name="LAST_COMMIT_MESSAGE" value="JSON" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -510,13 +511,44 @@
     <entry file="file://$APPLICATION_CONFIG_DIR$/extensions/com.intellij.database/schema/Generate POJOs.groovy">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/Lanes/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/task.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Lanes/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-367">
-          <caret line="6" column="57" selection-start-line="6" selection-start-column="57" selection-end-line="6" selection-end-column="57" />
+        <state relative-caret-position="402">
+          <caret line="35" column="48" lean-forward="true" selection-start-line="35" selection-start-column="48" selection-end-line="35" selection-end-column="48" />
           <folding>
             <element signature="e#292#320#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/lane.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://191c3949-ea0c-468e-a14c-7931a953bd57/schema/main/table/lanes_task1">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
@@ -534,58 +566,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/lane.json">
+    <entry file="file://$PROJECT_DIR$/Lanes/templates/Lanes/viz.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GanttChart/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="13" column="29" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
+        <state relative-caret-position="672">
+          <caret line="133" column="59" selection-start-line="133" selection-start-column="59" selection-end-line="133" selection-end-column="59" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Lanes/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="83" column="34" selection-start-line="83" selection-start-column="34" selection-end-line="83" selection-end-column="34" />
+        <state relative-caret-position="413">
+          <caret line="76" column="18" selection-start-line="76" selection-start-column="18" selection-end-line="76" selection-end-column="18" />
           <folding>
             <element signature="e#39#74#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Lanes/admin.py">
+    <entry file="file://$PROJECT_DIR$/GanttChart/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://191c3949-ea0c-468e-a14c-7931a953bd57/schema/main/table/lanes_task1">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/task.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Lanes/templates/Lanes/viz.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="246" column="79" selection-start-line="246" selection-start-column="79" selection-end-line="246" selection-end-column="79" />
+        <state relative-caret-position="460">
+          <caret line="26" column="46" selection-start-line="26" selection-start-column="46" selection-end-line="26" selection-end-column="46" />
         </state>
       </provider>
     </entry>
