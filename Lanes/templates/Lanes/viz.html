@@ -151,7 +151,7 @@
 
     // Import Task JSON file and run the function to display the Tasks
     d3.json("tasksJSON/", function (error, task_data) {
-        timeWindow(task_data);
+        //timeWindow(task_data);
         addTask(task_data)
     });
 
@@ -184,7 +184,6 @@
     //-----------------------------------------------------
     // Function that creates task rectangles and defines their behavior
     function addTask(source){
-
         // container to hold every task rectangle
         var taskContainer = container.append("g");
 
@@ -206,11 +205,11 @@
             // see models.py for explanation
 
             .attr("y", function (d) {
-                return title_height + (2*spacing) + (d.family-1)*laneGap;
+                return title_height + (2*spacing) + (d.resources-1)*laneGap;
             })
 
             // added two attributes to be able to send lane/task ids with AJAX
-            .attr("lane", function(d){return d.family})
+            .attr("lane", function(d){return d.resources})
             .attr("task", function(d){return d.id})
             .attr("fixed", function(d){return d.fixed})
             .attr("least_start", function(d){return d.least_start})
@@ -256,7 +255,7 @@
             // see models.py for explanation
 
             .attr("y", function (d) {
-                return title_height + (2 * spacing) + (d.family - 1) * laneGap+2;
+                return title_height + (2 * spacing) + (d.resources - 1) * laneGap+2;
             })
             .attr("z",100)
 
@@ -284,6 +283,7 @@
     }
 
     </script>
+
 
 
 {%  endblock %}

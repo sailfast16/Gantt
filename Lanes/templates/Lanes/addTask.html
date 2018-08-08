@@ -4,13 +4,28 @@
 {%  extends 'Lanes/base.html' %}
 {% block content %}
 
-    <div class="container-fluid">
-        <form method="POST" >
-            {% csrf_token %}
-            {{ taskForm.as_p}}
-            <button type="submit">Add Task</button>
-        </form>
 
-    </div>
+
+<meta charset="utf-8">
+
+<title>Dropzone simple example</title>
+
+
+<!--
+  DO NOT SIMPLY COPY THOSE LINES. Download the JS and CSS files from the
+  latest release (https://github.com/enyo/dropzone/releases/latest), and
+  host them yourself!
+-->
+<script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
+<link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
+
+
+<p>
+  Place Task JSON file here
+</p>
+
+<!-- Change /upload-target to your upload address -->
+
+<form action="/upload" class="dropzone">{% csrf_token %}</form>
 
 {% endblock %}
